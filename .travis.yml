@@ -4,5 +4,4 @@ language: R
 sudo: false
 cache: packages
 bioc_packages:
-  - EBImages
   - ggtree
