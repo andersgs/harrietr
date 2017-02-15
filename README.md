@@ -1,4 +1,6 @@
-# `harrietr`: An `R` package for various phylogenetic and evolutionary biology data manipulations
+# `harrietr`: An `R` package for various phylogenetic and evolutionary biology data manipulations 
+
+[![Travis-CI Build Status](https://travis-ci.org/andersgs/harrietr.svg?branch=master)](https://travis-ci.org/andersgs/harrietr)
 
 ## Why `harrietr`:
 
