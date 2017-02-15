@@ -83,6 +83,10 @@ dist_df <- dist_long(aln = woodmouse, order = woodmouse_iqtree$tip.label, dist =
 ggplot(dist_df, aes(x = dist, y =  evol_dist)) + geom_point() + stat_smooth(method = 'lm')
 ```
 
+This will produce the following image:
+
+![](inst/exdata/images/example1.png)
+
 ### Indicating nodes that have support
 Assume you have generated your ML tree with IQTREE, and wish to plot it in `R`, 
 and indicate which nodes have 50% or more support values for both metrics (**note**: 
@@ -102,3 +106,7 @@ p1 +
   geom_point(data = node_support %>% dplyr::filter(`SH-aLRT` >= 50 & uBS >= 50), aes(x = x, y = y), colour = 'darkgreen', size = 5, pch = 21) +
   geom_point(data = node_support %>% dplyr::filter(`SH-aLRT` >= 50 & uBS >= 50), aes(x = x, y = y), colour = 'darkgreen', size = 7, pch = 21)
 ```
+
+This will produce the following image:
+
+![](inst/exdata/images/example2.png)
