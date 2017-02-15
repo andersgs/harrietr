@@ -23,6 +23,4 @@ Imports:
     lazyeval (>= 0.2.0),
     dplyr (>= 0.5.0),
     tidyr (>= 0.6.0)
-Suggests:
-    EBImage (>= 4.16.0)
 RoxygenNote: 5.0.1
