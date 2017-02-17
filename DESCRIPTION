@@ -3,8 +3,7 @@ Type: Package
 Title: Wrangle Phylogenetic Distance Matrices and Other Utilities
 Version: 0.1.0
 Authors@R: person("Anders", "Gonçalves da Silva", email = "andersgs@gmail.com", role = c("aut", "cre"))
-#Maintainer: The package maintainer <yourself@somewhere.net>
-Description: Harriet was Charles Darwin's pet turtoise (possibly). 'harritr'
+Description: Harriet was Charles Darwin's pet tortoise (possibly). 'harritr'
     implements some function to manipulate distance matrices and phylogenetic trees
     to make it easier to plot with 'ggplot2' and to manipulate using 'tidyverse'
     tools.
@@ -16,7 +15,6 @@ Encoding: UTF-8
 LazyData: true
 Imports:
     ape (>= 3.5),
-    tidyverse (>= 1.0.0),
     ggtree (>= 1.6.9),
     ggplot2 (>= 2.1.0),
     magrittr (>= 1.5),
