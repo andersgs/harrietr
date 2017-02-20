@@ -16,3 +16,9 @@
 #' @source "ape" package \link[ape]{woodmouse}
 #'
 "woodmouse_iqtree"
+
+#' Woodmouse metadata
+#'
+#' A dummy metadata table generated to demonstrate the use of \code{add_metadata}.
+#'
+"woodmouse_meta"
