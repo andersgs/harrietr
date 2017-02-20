@@ -71,6 +71,13 @@ information that can be used to plot support information layers on a tree.
 
 ## Some use cases
 
+1. [Comparing distances](#comparing_distances)
+2. [Plotting node support](#node_support)
+3. [Getting group level stats](#group_stats)
+
+
+<a name="comparing_distances"/>
+
 ### Comparing distances
 Assume you have a tree, and you want to understand what is the relationship
 between the branch lengths and the number of SNPs. The function `dist_long` 
@@ -82,14 +89,19 @@ library(ggplot2)
 data("woodmouse")
 data("woodmouse_iqtree")
 dist_df <- dist_long(aln = woodmouse, order = woodmouse_iqtree$tip.label, dist = "N", tree = woodmouse_iqtree)
-ggplot(dist_df, aes(x = dist, y =  evol_dist)) + geom_point() + stat_smooth(method = 'lm')
+ggplot(dist_df, aes(x = dist, y =  evol_dist)) + 
+  geom_point() + stat_smooth(method = 'lm') +
+  ylab("Evolutionary distance") +
+  xlab("SNP distance")
 ```
 
 This will produce the following image:
 
 ![](inst/exdata/images/example1.png)
 
-### Indicating nodes that have support
+<a name="node_support"/>
+
+### Indicating nodes that have support on a tree
 Assume you have generated your ML tree with IQTREE, and wish to plot it in `R`, 
 and indicate which nodes have 50% or more support values for both metrics (**note**: 
 the value of 50% is likely too low, these values are chosen only for illustration
@@ -112,3 +124,39 @@ p1 +
 This will produce the following image:
 
 ![](inst/exdata/images/example2.png)
+
+<a name="group_stats"/>
+
+### Getting group level statistics
+Assume you have classified your samples into different groups (say A, B, and C). 
+These could be anything (e.g., MLST, sample source, host, etc.), and you want 
+summary information among and between the groups (e.g., IQR, min/max dist). 
+You can use `dist_long` and `add_metadata` to generate the `data.frame` you need:
+
+```
+library(ggplot2)
+library(dplyr)
+library(harrietr)
+data("woodmouse")
+data("woodmouse_iqtree")
+data("woodmouse_meta")
+dist_df <- dist_long(aln = woodmouse, order = woodmouse_iqtree$tip.label, dist = "N", tree = woodmouse_iqtree)
+dist_df <- add_metadata(dist_df, woodmouse_meta, isolate = 'SAMPLE_ID', group = 'CLUSTER', remove_ind = TRUE)
+dist_df %>%
+  dplyr::group_by(CLUSTER) %>%
+  dplyr::summarise(q50 = median(dist),
+  q25 = quantile(dist, prob = c(0.25)),
+  q75 = quantile(dist, prob = c(0.75)),
+  min_dist = min(dist),
+  max_dist = max(dist)) %>%
+  ggplot( aes( x = CLUSTER, y = q50)) +
+  geom_errorbar( aes(ymin = q25, ymax = q75),width = 0.25 ) +
+  geom_point(size = 3, colour = 'darkred') +
+  geom_point( aes( y = min_dist), colour = 'darkgreen', size = 3) +
+  geom_point( aes( y = max_dist), colour = 'darkgreen', size = 3) +
+  ylab("Pairwise SNP difference") +
+  xlab("Groups")
+```
+This will produce the following image:
+
+![](inst/exdata/images/example3.png)
