@@ -2,3 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
+inst/.DS_Store
+inst/exdata/woodmouse_meta.csv
