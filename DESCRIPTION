@@ -1,7 +1,7 @@
 Package: harrietr
 Type: Package
 Title: Wrangle Phylogenetic Distance Matrices and Other Utilities
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: person("Anders", "Gonçalves da Silva", email = "andersgs@gmail.com", role = c("aut", "cre"))
 Description: Harriet was Charles Darwin's pet tortoise (possibly). 'harritr'
     implements some function to manipulate distance matrices and phylogenetic trees
