@@ -30,6 +30,7 @@
 #' add_metadata(dist_df, woodmouse_meta, isolate = 'SAMPLE_ID', group = 'CLUSTER', remove_ind = TRUE)
 #' }
 #' @export
+#' @importFrom stats setNames
 
 
 add_metadata <- function(dist, meta, isolate = 'ISOLATES', group = 'CLUSTER', remove_ind = TRUE) {
