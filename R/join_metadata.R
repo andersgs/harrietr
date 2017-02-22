@@ -27,13 +27,13 @@
 #' data(woodmouse)
 #' data(woodmouse_meta)
 #' dist_df <- dist_long(woodmouse)
-#' add_metadata(dist_df, woodmouse_meta, isolate = 'SAMPLE_ID', group = 'CLUSTER', remove_ind = TRUE)
+#' join_metadata(dist_df, woodmouse_meta, isolate = 'SAMPLE_ID', group = 'CLUSTER', remove_ind = TRUE)
 #' }
 #' @export
 #' @importFrom stats setNames
 
 
-add_metadata <- function(dist, meta, isolate = 'ISOLATES', group = 'CLUSTER', remove_ind = TRUE) {
+join_metadata <- function(dist, meta, isolate = 'ISOLATES', group = 'CLUSTER', remove_ind = TRUE) {
   gr1 <- paste(group, '1', sep = '_')
   gr2 <- paste(group, '2', sep = '_')
   dist <- dist %>%
