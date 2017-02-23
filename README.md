@@ -1,6 +1,7 @@
 # `harrietr`: An `R` package for various phylogenetic and evolutionary biology data manipulations 
 
 [![Travis-CI Build Status](https://travis-ci.org/andersgs/harrietr.svg?branch=master)](https://travis-ci.org/andersgs/harrietr)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/harrietr)](https://cran.r-project.org/package=harrietr)
 
 ## Why `harrietr`:
 
@@ -16,8 +17,20 @@ language `R`.
 
 ## How to get it
 
-At the moment, the package is not in CRAN. So, to get it, please use 
-`devtools`:
+### From CRAN:
+
+1. Add `Bioconductor` to your list of default repositories:
+
+    `setRepositories(ind = 1:2)`
+
+2. Install `harrietr`:
+    
+    `install.packages("harrietr", dependencies = TRUE)`
+
+
+### Latest and gratest version from GitHub:
+
+You must use `devtools`:
 
 1. If you don't have `devtools` installed:
 
@@ -29,7 +42,7 @@ At the moment, the package is not in CRAN. So, to get it, please use
 
 3. Install `harrietr`:
 
-    `devtools::install_github("andersgs/harrietr@v0.1.0")`
+    `devtools::install_github("andersgs/harrietr@v0.2.2")`
 
 ## How to use it
 
