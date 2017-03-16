@@ -72,7 +72,7 @@ melt_dist <- function(dist, order = NULL, dist_name = 'dist') {
 dist_long <- function(aln, order = NULL, dist = 'N', tree = NULL){
   dist <- ape::dist.dna(x = aln, model = dist, as.matrix = T)
   if(is.null(order) & !is.null(tree)) {
-    order = tree$tip.names
+    order = tree$tip.labels
   }
   dist_df <- melt_dist(dist, order = order)
   if(!is.null(tree)) {
