@@ -96,7 +96,7 @@ Assume you have a tree, and you want to understand what is the relationship
 between the branch lengths and the number of SNPs. The function `dist_long` 
 can help you get there:
 
-```
+```r
 library(harrietr)
 library(ggplot2)
 data("woodmouse")
@@ -121,7 +121,7 @@ the value of 50% is likely too low, these values are chosen only for illustratio
 purposes). The function `get_node_support` can help
 you get there:
 
-```
+```r
 library(ggtree)
 library(dplyr)
 library(harrietr)
@@ -146,7 +146,7 @@ These could be anything (e.g., MLST, sample source, host, etc.), and you want
 summary information among and between the groups (e.g., IQR, min/max dist). 
 You can use `dist_long` and `add_metadata` to generate the `data.frame` you need:
 
-```
+```r
 library(ggplot2)
 library(dplyr)
 library(harrietr)
