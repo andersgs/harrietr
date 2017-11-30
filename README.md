@@ -110,7 +110,7 @@ ggplot(dist_df, aes(x = dist, y =  evol_dist)) +
 
 This will produce the following image:
 
-![](inst/exdata/images/example1.png)
+![](man/figures/example1.png)
 
 <a name="node_support"/>
 
@@ -136,7 +136,7 @@ p1 +
 
 This will produce the following image:
 
-![](inst/exdata/images/example2.png)
+![](man/figures/example2.png)
 
 <a name="group_stats"/>
 
@@ -172,4 +172,4 @@ dist_df %>%
 ```
 This will produce the following image:
 
-![](inst/exdata/images/example3.png)
+![](man/figures/example3.png)
