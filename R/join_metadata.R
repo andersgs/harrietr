@@ -10,7 +10,7 @@
 #' @param meta A data.frame with one column of IDs that match the IDs in \code{dist_long}
 #' @param isolate A character string with the name of the column in the meta data.frame with the ID data
 #' @param group A character string with the name of column containing the grouping variable
-#' @param remove_ind A boolean whether to remove intermediary columns
+#' @param remove_ind A boolean whether to remove all non-essential columns
 #'
 #' @details The output from \code{dist_long} with an additional column containing
 #' a factor, with levels composed of joining the categories in the \code{group}
@@ -30,24 +30,31 @@
 #' join_metadata(dist_df, woodmouse_meta, isolate = 'SAMPLE_ID', group = 'CLUSTER', remove_ind = TRUE)
 #' }
 #' @export
-#' @importFrom stats setNames
 
 
-join_metadata <- function(dist, meta, isolate = 'ISOLATES', group = 'CLUSTER', remove_ind = TRUE) {
+join_metadata <- function(dist, meta, isolate = 'ISOLATES',
+                          group = 'CLUSTER', remove_ind = TRUE) {
   gr1 <- paste(group, '1', sep = '_')
+  sgr1 <- rlang::sym(gr1)
   gr2 <- paste(group, '2', sep = '_')
+  sgr2 <- rlang::sym(gr2)
+  sgr <- rlang::sym(group)
   dist <- dist %>%
     dplyr::left_join(meta, c('iso1' = isolate)) %>%
-    dplyr::rename_(.dots = setNames(group, gr1)) %>%
+    dplyr::rename_at(vars(!!group), funs(paste(., "_1", sep=''))) %>%
     dplyr::left_join(meta, c('iso2' = isolate)) %>%
-    dplyr::rename_(.dots = setNames(group, gr2)) %>%
+    dplyr::rename_at(vars(!!group), funs(paste(., "_2", sep=''))) %>%
     dplyr::rowwise() %>%
-    dplyr::mutate_(.dots = setNames(lazyeval::interp("ifelse(gr1 == gr2, gr1, paste(sort(c(gr1, gr2)), collapse = delim))", .values = list(gr1 = as.name(gr1), gr2 = as.name(gr2), delim = '')), group)) %>%
+    dplyr::mutate(!!group := if_else((!!sgr1) == (!!sgr2),
+                                     !!sgr1,
+                                     paste(sort(c(!!sgr1, !!sgr2)),
+                                           collapse=''))) %>%
     dplyr::ungroup() %>%
-    dplyr::mutate_(.dots = setNames(lazyeval::interp("factor(gr, levels = unique(gr)[order(nchar(unique(gr)))])", gr = as.name(group)), group))
+    dplyr::mutate(!!group := factor(!!sgr,
+                                    levels = unique(!!sgr)[order(nchar(unique(!!sgr)))]))
   if(remove_ind) {
     dist <- dist %>%
-      dplyr::select_(lazyeval::interp(quote(-x1), quote(-x2), x1 = as.name(gr1)), lazyeval::interp(quote(-x2), x2 =as.name(gr2)))
+      dplyr::select(iso1, iso2, !!group)
   }
   return(dist)
 }
