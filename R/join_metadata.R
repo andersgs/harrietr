@@ -39,13 +39,15 @@ join_metadata <- function(dist, meta, isolate = 'ISOLATES',
   gr2 <- paste(group, '2', sep = '_')
   sgr2 <- rlang::sym(gr2)
   sgr <- rlang::sym(group)
+  iso1 <- "iso1"
+  iso2 <- "iso2"
   dist <- dist %>%
     dplyr::left_join(meta, c('iso1' = isolate)) %>%
-    dplyr::rename_at(vars(!!group), funs(paste(., "_1", sep=''))) %>%
+    dplyr::rename_at(dplyr::vars(!!group), dplyr::funs(paste(., "_1", sep=''))) %>%
     dplyr::left_join(meta, c('iso2' = isolate)) %>%
-    dplyr::rename_at(vars(!!group), funs(paste(., "_2", sep=''))) %>%
+    dplyr::rename_at(dplyr::vars(!!group), dplyr::funs(paste(., "_2", sep=''))) %>%
     dplyr::rowwise() %>%
-    dplyr::mutate(!!group := if_else((!!sgr1) == (!!sgr2),
+    dplyr::mutate(!!group := dplyr::if_else((!!sgr1) == (!!sgr2),
                                      !!sgr1,
                                      paste(sort(c(!!sgr1, !!sgr2)),
                                            collapse=''))) %>%
@@ -54,7 +56,7 @@ join_metadata <- function(dist, meta, isolate = 'ISOLATES',
                                     levels = unique(!!sgr)[order(nchar(unique(!!sgr)))]))
   if(remove_ind) {
     dist <- dist %>%
-      dplyr::select(iso1, iso2, !!group)
+      dplyr::select(!!iso1, !!iso2, !!group)
   }
   return(dist)
 }
