@@ -15,11 +15,12 @@ BugReports: https://github.com/andersgs/harrietr/issues
 Encoding: UTF-8
 LazyData: true
 Imports:
-    ape (>= 3.5),
-    ggtree (>= 1.6.9),
-    ggplot2 (>= 2.1.0),
+    ape (>= 4.1),
+    ggtree (>= 1.8.1),
+    ggplot2 (>= 2.2.1),
     magrittr (>= 1.5),
     lazyeval (>= 0.2.0),
-    dplyr (>= 0.5.0),
-    tidyr (>= 0.6.0)
+    dplyr (>= 0.7.2),
+    tidyr (>= 0.7.0),
+    rlang (>= 0.1.2)
 RoxygenNote: 6.0.1
