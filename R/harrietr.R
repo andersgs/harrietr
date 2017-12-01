@@ -8,7 +8,6 @@
 #'
 #' @docType package
 #' @name harrietr
-#' @importFrom dplyr %>%
 #' @importFrom rlang ":="
 NULL
 
