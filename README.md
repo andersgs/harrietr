@@ -42,7 +42,7 @@ You must use `devtools`:
 
 3. Install `harrietr`:
 
-    `devtools::install_github("andersgs/harrietr@v0.2.2")`
+    `devtools::install_github("andersgs/harrietr")`
 
 ## How to use it
 
