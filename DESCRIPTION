@@ -17,10 +17,11 @@ LazyData: true
 Imports:
     ape (>= 4.1),
     ggtree (>= 1.8.1),
-    ggplot2 (>= 2.2.1),
     magrittr (>= 1.5),
     lazyeval (>= 0.2.0),
     dplyr (>= 0.7.2),
     tidyr (>= 0.7.0),
     rlang (>= 0.1.2)
+Suggests:
+    ggplot2 (>= 2.2.1)
 RoxygenNote: 6.0.1
