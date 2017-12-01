@@ -21,4 +21,3 @@ command:
 The tree was loaded into `R` using `ape::read.tree`, and saved to a dataset.
 }
 \keyword{datasets}
-

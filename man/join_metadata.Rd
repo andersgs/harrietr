@@ -16,7 +16,7 @@ join_metadata(dist, meta, isolate = "ISOLATES", group = "CLUSTER",
 
 \item{group}{A character string with the name of column containing the grouping variable}
 
-\item{remove_ind}{A boolean whether to remove intermediary columns}
+\item{remove_ind}{A boolean whether to remove all non-essential columns}
 }
 \description{
 This functions takes the output from \code{dist_long}, plus a
@@ -44,4 +44,3 @@ dist_df <- dist_long(woodmouse)
 join_metadata(dist_df, woodmouse_meta, isolate = 'SAMPLE_ID', group = 'CLUSTER', remove_ind = TRUE)
 }
 }
-

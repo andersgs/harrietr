@@ -31,4 +31,3 @@ dist <- ape::dist(woodmouse, model = 'N', as.matrix = TRUE)
 dist_df <- melt_dist(dist)
 }
 }
-

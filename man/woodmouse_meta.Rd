@@ -12,4 +12,3 @@ woodmouse_meta
 A dummy metadata table generated to demonstrate the use of \code{add_metadata}.
 }
 \keyword{datasets}
-

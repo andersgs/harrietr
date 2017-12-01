@@ -26,4 +26,3 @@ data(woodmouse_iqtree)
 get_node_support(woodmouse_iqtree)
 }
 }
-

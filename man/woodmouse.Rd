@@ -15,4 +15,3 @@ woodmouse
 Woodmouse dataset
 }
 \keyword{datasets}
-

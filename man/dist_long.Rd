@@ -36,4 +36,3 @@ data(woodmouse)
 dist_df <- dist_long(woodmouse)
 }
 }
-
