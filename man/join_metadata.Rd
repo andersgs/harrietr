@@ -5,7 +5,7 @@
 \title{Add metadata to long distance matrix}
 \usage{
 join_metadata(dist, meta, isolate = "ISOLATES", group = "CLUSTER",
-  remove_ind = TRUE)
+  remove_ind = TRUE, measure_col_contains = "dist")
 }
 \arguments{
 \item{dist}{A data.frame produced by dist_long function}
@@ -17,6 +17,8 @@ join_metadata(dist, meta, isolate = "ISOLATES", group = "CLUSTER",
 \item{group}{A character string with the name of column containing the grouping variable}
 
 \item{remove_ind}{A boolean whether to remove all non-essential columns}
+
+\item{measure_col_contains}{A character string with a pattern that matches up with the measurement columns you wish to retain in the final output (default: 'dist')}
 }
 \description{
 This functions takes the output from \code{dist_long}, plus a
