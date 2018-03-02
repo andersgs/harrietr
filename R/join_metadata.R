@@ -11,6 +11,7 @@
 #' @param isolate A character string with the name of the column in the meta data.frame with the ID data
 #' @param group A character string with the name of column containing the grouping variable
 #' @param remove_ind A boolean whether to remove all non-essential columns
+#' @param measure_col_contains A character string with a pattern that matches up with the measurement columns you wish to retain in the final output (default: 'dist')
 #'
 #' @details The output from \code{dist_long} with an additional column containing
 #' a factor, with levels composed of joining the categories in the \code{group}
@@ -33,7 +34,8 @@
 
 
 join_metadata <- function(dist, meta, isolate = 'ISOLATES',
-                          group = 'CLUSTER', remove_ind = TRUE) {
+                          group = 'CLUSTER', remove_ind = TRUE,
+                          measure_col_contains = 'dist') {
   gr1 <- paste(group, '1', sep = '_')
   sgr1 <- rlang::sym(gr1)
   gr2 <- paste(group, '2', sep = '_')
@@ -56,7 +58,7 @@ join_metadata <- function(dist, meta, isolate = 'ISOLATES',
                                     levels = unique(!!sgr)[order(nchar(unique(!!sgr)))]))
   if(remove_ind) {
     dist <- dist %>%
-      dplyr::select(!!iso1, !!iso2, !!group)
+      dplyr::select(!!iso1, !!iso2, dplyr::contains(measure_col_contains), !!group)
   }
   return(dist)
 }
